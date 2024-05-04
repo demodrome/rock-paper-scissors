@@ -1,3 +1,10 @@
+// Game selection options
+const choices = ['rock', 'paper', 'scissors'];
+
+// Track scores
+let playerScore = 0;
+let computerScore = 0;
+
 /**
  * Generate a random number
  * @returns {Number} A random number from 0-2
@@ -5,13 +12,6 @@
 function getRandomNumber() {
     return Math.floor(Math.random() * 3);
 }
-
-// Game selection options
-const choices = ['rock', 'paper', 'scissors'];
-
-// Track scores
-let playerScore = 0;
-let computerScore = 0;
 
 /**
  * Get the computer's choice
