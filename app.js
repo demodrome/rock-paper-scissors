@@ -39,3 +39,51 @@ function getPlayerChoice() {
 
     return playerChoice;
 }
+
+/**
+ * Play a round
+ * @param {String} playerChoice The player's choice of rock, paper, or scissors
+ * @param {String} computerChoice The computer's choice of rock, paper, or scissors
+ */
+function playRound(playerChoice, computerChoice) {
+    // Check win cinditions
+    if (playerChoice === 'rock') {
+        if (computerChoice === 'rock') {
+            console.log('It\'s a draw!');
+        }
+        else if (computerChoice === 'paper') {
+            console.log('You lose! Paper beats Rock.');
+            computerScore++;
+        }
+        else {
+            console.log('You win! Rock beats Scissors.');
+            playerScore++;
+        }
+    }
+    else if (playerChoice === 'paper') {
+        if (computerChoice === 'rock') {
+            console.log('You win! Paper beats Rock.');
+            playerScore++;
+        }
+        else if (computerChoice === 'paper') {
+            console.log('It\'s a draw!');
+        }
+        else {
+            console.log('You lose! Scissors beats Paper.')
+            computerScore++;
+        }
+    }
+    else {
+        if (computerChoice === 'rock') {
+            console.log('You lose! Rock beats Scissors.');
+            computerScore++;
+        }
+        else if (computerChoice === 'paper') {
+            console.log('You win! Scissors beats Paper.');
+            playerScore++;
+        }
+        else {
+            console.log('It\'s a draw!');
+        }
+    }
+}
