@@ -1,3 +1,7 @@
+/**
+ * Generate a random number
+ * @returns {Number} A random number from 0-2
+ */
 function getRandomNumber() {
     return Math.floor(Math.random() * 3);
 }
