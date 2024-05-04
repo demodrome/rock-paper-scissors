@@ -9,6 +9,10 @@ function getRandomNumber() {
 // Game selection options
 const choices = ['rock', 'paper', 'scissors'];
 
+// Track scores
+let playerScore = 0;
+let computerScore = 0;
+
 /**
  * Get the computer's choice
  * @returns {String} The computers choice of rock, paper, or scissors
