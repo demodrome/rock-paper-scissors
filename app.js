@@ -44,6 +44,9 @@ function playGame() {
     let computerScore = 0;
     // UI components
     const gameControls = document.querySelector('[data-controls]');
+    const resultMessageUi = document.querySelector('[data-result-message]');
+    const playerScoreUi = document.querySelector('[data-result-player]');
+    const computerScoreUi = document.querySelector('[data-result-computer]');
 
     /**
      * Play a round
@@ -51,46 +54,62 @@ function playGame() {
      * @param {String} computerChoice The computer's choice of rock, paper, or scissors
      */
     function playRound(playerChoice, computerChoice) {
+        // Check for a winner
+        if (playerScore === 5) {
+            resultMessageUi.textContent = 'You win!';
+            resultMessageUi.style.color = 'green';
+            return;
+        }
+        if (computerScore === 5) {
+            resultMessageUi.textContent = 'You lose!';
+            resultMessageUi.style.color = 'red';
+            return;
+        }
+
         // Check win cinditions
         if (playerChoice === 'rock') {
             if (computerChoice === 'rock') {
-                console.log('It\'s a draw!');
+                resultMessageUi.textContent = 'It\'s a draw!';
             }
             else if (computerChoice === 'paper') {
-                console.log('You lose! Paper beats Rock.');
+                resultMessageUi.textContent = 'You lose! Paper beats Rock.'
                 computerScore++;
             }
             else {
-                console.log('You win! Rock beats Scissors.');
+                resultMessageUi.textContent = 'You win! Rock beats Scissors.';
                 playerScore++;
             }
         }
         else if (playerChoice === 'paper') {
             if (computerChoice === 'rock') {
-                console.log('You win! Paper beats Rock.');
+                resultMessageUi.textContent = 'You win! Paper beats Rock.';
                 playerScore++;
             }
             else if (computerChoice === 'paper') {
-                console.log('It\'s a draw!');
+                resultMessageUi.textContent = 'It\'s a draw!';
             }
             else {
-                console.log('You lose! Scissors beats Paper.')
+                resultMessageUi.textContent = 'You lose! Scissors beats Paper.';
                 computerScore++;
             }
         }
         else {
             if (computerChoice === 'rock') {
-                console.log('You lose! Rock beats Scissors.');
+                resultMessageUi.textContent = 'You lose! Rock beats Scissors.';
                 computerScore++;
             }
             else if (computerChoice === 'paper') {
-                console.log('You win! Scissors beats Paper.');
+                resultMessageUi.textContent = 'You win! Scissors beats Paper.';
                 playerScore++;
             }
             else {
-                console.log('It\'s a draw!');
+                resultMessageUi.textContent = 'It\'s a draw!';
             }
         }
+
+        //  Update the UI
+        playerScoreUi.textContent = playerScore;
+        computerScoreUi.textContent = computerScore;
     }
 
     /**
@@ -103,6 +122,8 @@ function playGame() {
 
         playRound(playerChoice, computerChoice);
     }
+
+    gameControls.addEventListener('click', handleControlEvents);
 }
 
 playGame();
