@@ -1,6 +1,3 @@
-// Game selection options
-const choices = ['rock', 'paper', 'scissors'];
-
 /**
  * Generate a random number
  * @returns {Number} A random number from 0-2
@@ -13,7 +10,7 @@ function getRandomNumber() {
  * Get the computer's choice
  * @returns {String} The computers choice of rock, paper, or scissors
  */
-function getComputerChoice() {
+function getComputerChoice(choices) {
     const randomNumber = getRandomNumber();
 
     // Return the array value at a random index from 0 - 2
@@ -40,9 +37,13 @@ function getPlayerChoice() {
  * The game loop
  */
 function playGame() {
+    // Game selection options
+    const choices = ['rock', 'paper', 'scissors'];
     // Track scores
     let playerScore = 0;
     let computerScore = 0;
+    // UI components
+    const gameControls = document.querySelector('[data-controls]');
 
     /**
      * Play a round
@@ -92,19 +93,16 @@ function playGame() {
         }
     }
 
-    // Play five rounds
-    for (let i = 0; i < 5; i++) {
-        let playerChoice = getPlayerChoice();
-        let computerChoice = getComputerChoice();
+    /**
+     * Handle what happens when game control buttons are clicked
+     * @param {Object} event The event object
+     */
+    function handleControlEvents(event) {
+        const playerChoice = event.target.value;
+        const computerChoice = getComputerChoice(choices);
 
-        // Update UI
-        console.clear();
-        console.log(`Round ${i + 1}`);
-
-        // Play the round
         playRound(playerChoice, computerChoice);
-
-        // Update UI
-        console.log(`Player Score: ${playerScore}\nComputer Score: ${computerScore}`);
     }
 }
+
+playGame();
